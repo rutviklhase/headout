@@ -6,7 +6,7 @@ name: Deploy
 #   workflow_dispatch:
 on: 
   repository_dispatch:
-    types: [doc_update]
+    types: [deploy_app]
 
 
 jobs: 
@@ -51,4 +51,6 @@ jobs:
         username: ubuntu
         key: ${{ secrets.PEM_KEY }}
         command_timeout: 10s
-        script: sudo docker run -d -p 5001:9000 705706633861.dkr.ecr.us-east-2.amazonaws.com/headout_assignment2:headout_tag
+        script: |
+          sudo docker stop headout-container
+          sudo docker run -d -p 5001:9000 --name headout-container 705706633861.dkr.ecr.us-east-2.amazonaws.com/headout_assignment2:headout_tag
