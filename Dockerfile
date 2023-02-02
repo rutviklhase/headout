@@ -10,7 +10,7 @@ RUN apt-get install python3-pip -y
 RUN apt-get install python3-git -y
 RUN pip install gitpython
 
-EXPOSE 80
+# EXPOSE 80
 
 # Run the Python Script
 CMD ["python3","./mainscript.py"]
