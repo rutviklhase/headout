@@ -51,7 +51,8 @@ jobs:
         username: ubuntu
         key: ${{ secrets.PEM_KEY }}
         command_timeout: 10s
+        sync: true
         script: |
           sudo docker stop headout-container
-          sleep 15 &
+          sleep 15 
           sudo docker run -d -p 5001:9000 --name headout-container 705706633861.dkr.ecr.us-east-2.amazonaws.com/headout_assignment2:headout_tag
