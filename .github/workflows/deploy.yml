@@ -4,7 +4,9 @@ name: Deploy
 #     branches:
 #       - main
 #   workflow_dispatch:
-on: [repository_dispatch]
+on: 
+  repository_dispatch:
+    types: [doc_update]
 
 
 jobs: 
