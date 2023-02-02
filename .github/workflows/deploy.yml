@@ -41,6 +41,7 @@ jobs:
     steps: 
     - name: Executing SSH commands on EC2 
       uses: appleboy/ssh-action@v0.1.7
+      command_timeout: 10s
       with: 
         host: ec2-3-21-159-67.us-east-2.compute.amazonaws.com
         username: ubuntu
