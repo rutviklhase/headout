@@ -8,6 +8,3 @@ Task 1- Clone a GitHub repo from the specified URL on the current Machine.
 
 Task 2- Run the Java file "project.jar" which is present inside the newly cloned repo inside build/libs. Output - A server starts at port 9000.
 
-
-
-testing
