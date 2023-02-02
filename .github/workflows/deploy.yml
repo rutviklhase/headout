@@ -50,7 +50,6 @@ jobs:
         host: ec2-3-21-159-67.us-east-2.compute.amazonaws.com
         username: ubuntu
         key: ${{ secrets.PEM_KEY }}
-        command_timeout: 10s
         sync: true
         script: |
           sudo docker stop headout-container
