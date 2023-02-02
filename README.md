@@ -8,3 +8,7 @@ Task 1- Clone a GitHub repo from the specified URL on the current Machine.
 
 Task 2- Run the Java file "project.jar" which is present inside the newly cloned repo inside build/libs. Output - A server starts at port 9000.
 
+
+I have created a Dockerfile in order to build a custom Docker Image.This Image grabs the latest version of the node image from Docker Hub and then installs Python and pip. 
+After installing the prerequisites, "mainscript.py" is run. 
+
