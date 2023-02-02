@@ -10,8 +10,7 @@ RUN apt-get install python3-pip -y
 RUN apt-get install python3-git -y
 RUN pip install gitpython
 
-# Exposes port 5000
-EXPOSE 9000
+EXPOSE 80
 
 # Run the Python Script
 CMD ["python3","./mainscript.py"]
