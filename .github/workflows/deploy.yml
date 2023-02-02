@@ -33,3 +33,15 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        
+  deploy: 
+    name: Deploy the Application
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Executing SSH commands on EC2 
+      uses: appleboy/ssh-action@0.1.7
+      with: 
+        host: ec2-3-21-159-67.us-east-2.compute.amazonaws.com
+        username: ubuntu
+        key: ${{ secrets.PEM_KEY }}
+        script: sudo docker run 705706633861.dkr.ecr.us-east-2.amazonaws.com/headout_assignment2:headout_tag
