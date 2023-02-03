@@ -2,7 +2,10 @@
 1) https://github.com/rutviklhase/headout
 2) https://github.com/rutviklhase/headout_repo
 
-I have built a complete end-to-end CI/CD Pipeline which begins the moment a Push-event occurs on the "headout_repo" repository. 
+#### I have built a complete end-to-end CI/CD Pipeline which begins the moment a Push-event occurs on the "headout_repo" repository.
+
+#### The "headout" repository is our main repository. It is reponsible for configuring AWS Credentials -> Building our custom Docker image -> pushing the image to AWS ECR -> Running our image inside our EC2 instance by referencing the image from ECR -> cloning the GitHub repository from "headout_repo" -> starting the server.
+
 
 **Assumption:** You already have a Git Repo with a "project.js" file inside the directory build/libs. On executing "project.js", an NGINX server starts at port 9000.
 
