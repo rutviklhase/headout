@@ -24,6 +24,8 @@ I have created a Dockerfile in order to build a custom Docker Image. This Image 
 **Potential-Failure:** The docker Container is ran using `--name headout-container`. If a Container with same name is already present, an error will be thrown. 
 **Solution:** Before the Container is ran, `docker stop headout-container` and `docker container prune -f` commands are used in order to make sure that there is no preexisting container with the same name inside our EC2 instance.
 
+**Assumption:** We already have an EC2 instance ready with AWS CLI and Docker installed on it. 
+
 ## Task 4- 
 Both of the repositories have workflow files which automate certain tasks. 
 
@@ -38,6 +40,7 @@ Both of the repositories have workflow files which automate certain tasks.
 
 ## Task 5- 
 I have created a Load Balancer in order to route the inbound traffic from Internet towards our EC2 instance. 
+I have created a listener on HTTP:80 and forwarded the traffic to a Target Group which includes our EC2 instance at port 9000. As this acts as a host port for the Container's client port (which is also 9000), the traffic is routed towards our Docker container's localhost:9000 where our server is running.
 
 DNS Name : http://headout-load-balancer-1410595714.us-east-2.elb.amazonaws.com/
 
