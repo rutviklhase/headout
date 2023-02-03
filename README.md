@@ -38,6 +38,8 @@ Both of the repositories have workflow files which automate certain tasks.
 6) "deploy" job first attempts to stop the previous docker container if it exists.
 7) "deploy" job then uses `docker run` in order to run the Docker image inside the Container. This docker image is the same image which is Pushed to AWS ECR in Step 4.
 
+**Public-Facing and Port in order to access the Server**: http://3.21.159.67:9000/
+
 ## Task 5- 
 I have created a Load Balancer in order to route the inbound traffic from Internet towards our EC2 instance. 
 I have created a listener on HTTP:80 and forwarded the traffic to a Target Group which includes our EC2 instance at port 9000. As this acts as a host port for the Container's client port (which is also 9000), the traffic is routed towards our Docker container's localhost:9000 where our server is running.
