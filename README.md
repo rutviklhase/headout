@@ -11,12 +11,15 @@ I have built a complete end-to-end CI/CD Pipeline which begins the moment a Push
 
 **Potential-Failure:** a) The Git repo you're trying to clone does not exist.  
 b) The directory in which the repo will be cloned already exists.
+**Solution**: The Potential-Failure b) is irrelevant here as when the application is deployed, it starts up on a fresh new container.
 
 ## Task 2- 
- The Python Script (mainscript.py) then starts the server by executing "project.js" which comes from the new newly cloned repository. 
+ The Python Script (mainscript.py) then starts the server by executing "project.js" which comes from the new newly cloned repository. This server listens on the localhost:9000 inside the Container.
 
 ## Task 3- 
-I have created a Dockerfile in order to build a custom Docker Image.This Image grabs the latest version of base node image from Docker Hub and then installs Python and pip. After installing the prerequisites, "mainscript.py" is ran, which performs Task 1 and Task 2 inside the Container. 
+I have created a Dockerfile in order to build a custom Docker Image. This Image grabs the latest version of base node image from Docker Hub and then installs Python and pip. After installing the prerequisites, "mainscript.py" is ran, which performs Task 1 and Task 2 inside the Container. The client port 9000 is also mapped to the host port 9000 of the EC2 Instance using `-p 9000:9000` when running the docker Container. This ensures that the inbound Traffic towards our EC2 instance's 9000 port is routed towards the Container's Client Port 9000.
+**Potential-Failure:** The docker Container is ran using `--name headout-container`. If a Container with same name is already present, an error will be thrown. 
+**Solution:** Before the Container is ran, `docker stop headout-container` and `docker container prune -f` commands are used in order to make sure that there is no preexisting container with the same name inside our EC2 instance.
 
 ## Task 4- 
 Both of the repositories have workflow files which automate certain tasks. 
@@ -32,6 +35,8 @@ Both of the repositories have workflow files which automate certain tasks.
 
 ## Task 5- 
 I have created a Load Balancer in order to route the inbound traffic from Internet towards our EC2 instance. 
+
+DNS Name : http://headout-load-balancer-1410595714.us-east-2.elb.amazonaws.com/
 
 
 
