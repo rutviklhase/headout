@@ -42,7 +42,7 @@ Both of the repositories have workflow files which automate certain tasks.
 I have created a Load Balancer in order to route the inbound traffic from Internet towards our EC2 instance. 
 I have created a listener on HTTP:80 and forwarded the traffic to a Target Group which includes our EC2 instance at port 9000. As this acts as a host port for the Container's client port (which is also 9000), the traffic is routed towards our Docker container's localhost:9000 where our server is running.
 
-DNS Name : http://headout-load-balancer-1410595714.us-east-2.elb.amazonaws.com/
+DNS Name : headout-load-balancer-2-1265120335.us-east-2.elb.amazonaws.com
 
 
 
